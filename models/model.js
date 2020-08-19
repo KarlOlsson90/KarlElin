@@ -7,7 +7,20 @@ module.exports = {
         
     }, 
     pst(body) {
-        db.insert(body, function(err, newDoc){})
+        
+        
+        db.findOne({ title: body.title }, function (err, doc) {
+            console.log(doc)
+            if (doc) {
+                    console.log("finns!")
+                    
+            } else {
+                console.log("finns inte!")
+                db.insert(body, function(err, newDoc){})
+            }
+            
+        })
+        
     },
     dlt(id) {
 

@@ -16,12 +16,14 @@ module.exports = {
     model.pst(body)
     res.json(req.body.title + " Lades till!")
 
-}, deleteCallback: (req, res) => { 
-
-    const id = req.params.id
-
-    model.dlt(id)
-    res.json(req.body.title + "Togs bort !?")
+}, deleteCallback: async (req, res) => { 
+    try {
+        const id = req.params.id
+        await model.dlt(id)
+        res.json("Det gick bra")
+    } catch(error) {
+        res.json("NEJ")
+    }
 
 }, getCallback: (req, res) => {
     res.send("hej")
