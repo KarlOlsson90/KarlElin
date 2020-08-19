@@ -5,27 +5,16 @@ const router = new Router()
 
 
 //GET
-router.get('/test', (req,res) => {
-    res.send('testet')
-})
+router.get('/test', controller.getCallback)
 
 //POST
-router.post('/inlagg', );
+router.post('/inlagg', controller.postCallback);
 
 //PUT
 router.put('/redigera/:id/', controller.putCallback)
 
 //DELETE
-router.delete('/radera/:id/', function (req, res) {
-
-    db.remove({ _id: req.params.id}, {})
-
-    res.json("req.params.id togs bort")
-    db.remove({koppling: req.params.id}, {multi: true})
-
-
-
-  })
+router.delete('/radera/:id/', controller.deleteCallback)
 
   router.post('/kommentar/:objektkoppling', function(req, res, next) {
 

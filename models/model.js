@@ -1,11 +1,19 @@
 const db = require('../database/database')
 
 module.exports = { 
-    test(id, body) {
-        console.log("test körs")
+    upd(id, body) {
+        
         db.update({ _id: id}, {title: body.title, content: body.content},{})
-        console.log("test är klar")
+        
+    }, 
+    pst(body) {
+        db.insert(body, function(err, newDoc){})
+    },
+    dlt(id) {
+
+        db.remove({ _id: id}, {}, function(err, numRemoved){})
     }
+
 
     
 
